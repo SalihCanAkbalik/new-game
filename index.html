@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Game</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body>
     <h1>New Game</h1>
-
-    <!-- Ruffle ile SWF çalıştırma -->
-    <script src="https://unpkg.com/ruffle-js"></script>
-
-    <embed src="sonhali.swf" width="800" height="600">
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            player.style.width = "800px";
+            player.style.height = "600px";
+            document.body.appendChild(player);
+            player.load("sonhali.swf");
+        });
+    </script>
 </body>
 </html>
